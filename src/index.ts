@@ -1,10 +1,10 @@
-import stringifyDates from './stringifyDates.js';
+import { stringifyDates, DateProps } from './stringifyDates.ts';
 const baseURL = 'https://api.forecastapp.com';
 
 class Forecast {
 	#headers;
 
-	constructor({ accountId, token } = {}, instance) {
+	constructor({ accountId = '', token = '' } = {}) {
 		if (!accountId || !token) {
 			throw new Error(
 				'Forecast module requires accountId and token to be configured.'
@@ -19,66 +19,66 @@ class Forecast {
 		};
 	}
 
-	async #createMethod({ name, dataLocation, options = {} }) {
+	async #createMethod({ name = '', dataLocation = '', options = {} }) {
 		const headers = this.#headers;
 		const params = stringifyDates(options);
 		const url = new URL(`${baseURL}/${name.toLowerCase()}`);
 
-		url.search = params;
+		url.search = new URLSearchParams(params).toString();
 
-		const route = new Request(url, { headers });
+		const route = new Request(url.toString(), { headers });
 		const prop = dataLocation || name;
 		const response = await fetch(route, { });
 		const data = await response.json();
 
-		return data[dataLocation];
+		return data[prop];
 	}
 
-	async whoAmI(options) {
-		return createMethod({
+	async whoAmI(options: DateProps) {
+		return this.#createMethod({
 			name: 'whoAmI',
 			dataLocation: 'current_user',
 			options
 		})
 	}
 
-	async clients(options) {
-		return createMethod({
+	async clients(options: DateProps) {
+		return this.#createMethod({
 			name: 'clients',
 			options
 		})
 	}
 
-	async people(options) {
-		return createMethod({
+	async people(options: DateProps) {
+		return this.#createMethod({
 			name: 'people',
 			options
 		})
 	}
 
-	async projects(options) {
-		return createMethod({
+	async projects(options: DateProps) {
+		return this.#createMethod({
 			name: 'projects',
 			options
 		})
 	}
 
-	async assignments(options) {
-		return createMethod({
+	async assignments(options: DateProps) {
+		return this.#createMethod({
 			name: 'assignments',
 			options
 		})
 	}
 
-	async milestones(options) {
-		return createMethod({
+	async milestones(options: DateProps) {
+		return this.#createMethod({
 			name: 'milestones',
 			options
 		})
 	}
 
-	async roles(options) {
-		return createMethod({
+	async roles(options: DateProps) {
+		return this.#createMethod({
 			name: 'roles',
 			options
 		})
