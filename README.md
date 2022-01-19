@@ -1,17 +1,11 @@
 # Node Forecast promise API
 
-[![CircleCI](https://circleci.com/gh/dan1elhughes/forecast-promise/tree/master.svg?style=shield)](https://circleci.com/gh/dan1elhughes/forecast-promise/tree/master)
-[![codecov](https://codecov.io/gh/dan1elhughes/forecast-promise/branch/master/graph/badge.svg)](https://codecov.io/gh/dan1elhughes/forecast-promise)
-[![npm version](https://badge.fury.io/js/forecast-promise.svg)](https://badge.fury.io/js/forecast-promise)
-
-A Forecast ([https://forecastapp.com](https://forecastapp.com)) API wrapper for Node.js. Forked from [inlight-media/node-forecast-api](https://github.com/inlight-media/node-forecast-api).
+A Forecast ([https://forecastapp.com](https://forecastapp.com)) API wrapper for Deno.js. Forked from [dan1elhughes/forecast-promise](https://github.com/dan1elhughes/forecast-promise).
 
 ## Installation
 
-Via npm:
-
-```bash
-$ npm install --save forecast-promise
+```js
+$ 'https://deno.land/x/forecast_promise/mod.ts'
 ```
 
 # Getting started
@@ -23,7 +17,7 @@ To find your accountId and generate the token, log into Forecast and go to [Deve
 # Usage
 
 ```js
-const Forecast = require('forecast-promise');
+import Forecast from 'https://deno.land/x/forecast_promise@v0.1.2/mod.ts';
 const forecast = new Forecast({
 	accountId: '12345',
 	token: '54321.abc.1-EXAMPLETOKEN',
