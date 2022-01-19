@@ -1,6 +1,6 @@
-const toDateString = require('./toDateString');
+import toDateString from './toDateString.js';
 
-module.exports = options => {
+export default function(options) {
 	const qs = {};
 
 	if (options.startDate) qs.start_date = toDateString(options.startDate);
@@ -10,4 +10,4 @@ module.exports = options => {
 	}
 
 	return qs;
-};
+}

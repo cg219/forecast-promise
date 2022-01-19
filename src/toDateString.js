@@ -1,6 +1,6 @@
-const moment = require('moment');
+import moment from 'https://deno.land/x/momentjs@2.29.1-deno/mod.ts';
 
-module.exports = obj => {
+export default function(obj) {
 	let date;
 
 	if (typeof obj === 'string') {
@@ -27,4 +27,4 @@ module.exports = obj => {
 	}
 
 	return date.format('YYYY-MM-DD');
-};
+}

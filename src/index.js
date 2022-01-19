@@ -1,5 +1,5 @@
-const axios = require('axios');
-const stringifyDates = require('./stringifyDates');
+import axios from 'https://deno.land/x/axiod@0.24/mod.ts';
+import stringifyDates from './stringifyDates.js';
 
 class Forecast {
 	constructor({ accountId, token } = {}, instance) {
@@ -47,4 +47,4 @@ class Forecast {
 	}
 }
 
-module.exports = Forecast;
+export default Forecast;
