@@ -1,2 +1,2 @@
-import forecast from './src/index.js';
+import forecast from './src/index.ts';
 export default forecast;
